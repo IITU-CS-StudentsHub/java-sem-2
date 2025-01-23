@@ -1,7 +1,11 @@
+package tasks;
+
 // Task 3
 // INPUT: [1,3,1,2,2]
 // OUTPUT: unique = 3
-// using XOR
+// 1 ^ 3 ^ 1 ^ 2 ^ 2 = 3
+// using XOR operation to find unique number
+// Note: Don't use lib
 public class UniqueNumberXOR_03 {
     public static void main(String[] args) {
         int[] arr = {1, 3, 1, 2, 2};
