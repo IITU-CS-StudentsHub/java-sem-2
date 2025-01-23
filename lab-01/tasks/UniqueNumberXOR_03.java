@@ -10,7 +10,7 @@ public class UniqueNumberXOR_03 {
     public static void main(String[] args) {
         int[] arr = {1, 3, 1, 2, 2};
         int unique = findUniqueNumber(arr);
-        System.out.println("unique = " + unique);
+        System.out.println("Unique = " + unique);
     }
 
     public static int findUniqueNumber(int[] arr) {

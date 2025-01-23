@@ -13,5 +13,9 @@ public class Main {
 			System.out.println();
 			System.out.println("Task 3");
 			tasks.UniqueNumberXOR_03.main(args);
+			// Task 4
+			System.out.println();
+			System.out.println("Task 4");
+			tasks.TwoUniqueNumbersXOR_04.main(args);
 		}
 }

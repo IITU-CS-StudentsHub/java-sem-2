@@ -1,3 +1,5 @@
+package tasks;
+
 // Task 4
 // INPUT: [1,3,5,1,2,2]
 // OUTPUT: 3, 5
