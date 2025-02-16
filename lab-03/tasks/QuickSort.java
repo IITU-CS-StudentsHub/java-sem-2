@@ -7,9 +7,12 @@ public class QuickSort {
 	public static void main(String[] args) {
 		int[] arr = { 5, 4, 3, 2, 1 };
 
+		long startTime = System.nanoTime();
 		quickSort(arr, 0, arr.length - 1);
+		long endTime = System.nanoTime();
 
 		System.out.println(Arrays.toString(arr));
+		System.out.println("Execution time: " + (endTime - startTime) + " ns");
 
 	}
 
@@ -31,18 +34,20 @@ public class QuickSort {
 		for (int j = start; j <= end - 1; j++) {
 			if (arr[j] < pivot) {
 				i++;
-				int temp = arr[i];
-				arr[i] = arr[j];
-				arr[j] = temp;
+				swap(arr, i, j);
 			}
 		}
 
 		i++;
-		int temp = arr[i];
-		arr[i] = arr[end];
-		arr[end] = temp;
+		swap(arr, i, end);
 
 		return i;
+	}
+
+	private static void swap(int[] arr, int i, int j) {
+		int temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
 	}
 
 }
