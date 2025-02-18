@@ -1,22 +1,8 @@
 package tasks;
 
-import java.util.Arrays;
-
 public class QuickSort {
 
-	public static void main(String[] args) {
-		int[] arr = { 5, 4, 3, 2, 1 };
-
-		long startTime = System.nanoTime();
-		quickSort(arr, 0, arr.length - 1);
-		long endTime = System.nanoTime();
-
-		System.out.println(Arrays.toString(arr));
-		System.out.println("Execution time: " + (endTime - startTime) + " ns");
-
-	}
-
-	private static void quickSort(int[] arr, int start, int end) {
+	public static void quickSort(int[] arr, int start, int end) {
 		if (end <= start)
 			return; // basecase
 
