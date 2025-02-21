@@ -23,20 +23,24 @@ public class SortManager {
 		long mergeSortTime = endTime - startTime;
 
 		// Dual pivot quick sort
+		DualPivotQuickSort sorter = new DualPivotQuickSort(arrForDualPivotQuickSort);
 		startTime = System.nanoTime();
-		DualPivotQuickSort.dualPivotQuickSort(arrForDualPivotQuickSort, 0, arrForDualPivotQuickSort.length - 1);
+		sorter.sort();
 		endTime = System.nanoTime();
 		long dualPivotQuickSortTime = endTime - startTime;
 
-		System.out.println("Initial array: " + Arrays.toString(arr));
+		// System.out.println("Initial array: " + Arrays.toString(arr));
 		// Merge + Insertion
-		System.out.println("Sorted array (Merge Sort + Insertion): " + Arrays.toString(arrForEnhancedMergeSort));
-		System.out.println("Time taken by Merge Sort + Insertion: " + mergeSortWithInsertionTime + " ns");
+		// System.out.println("Sorted array (Merge Sort + Insertion): " +
+		// Arrays.toString(arrForEnhancedMergeSort));
+		System.out.println("Time taken by Merge Sort + Insertion: " + mergeSortWithInsertionTime / 1000 + " ns");
 		// Merge
-		System.out.println("Sorted array (Merge Sort): " + Arrays.toString(arrForMergeSort));
-		System.out.println("Time taken by Merge Sort: " + mergeSortTime + " ns");
+		// System.out.println("Sorted array (Merge Sort): " +
+		// Arrays.toString(arrForMergeSort));
+		System.out.println("Time taken by Merge Sort: " + mergeSortTime / 1000 + " ns");
 		// Dual pivot quick sort
-		System.out.println("Sorted array (Dual pivot quick sort): " + Arrays.toString(arrForDualPivotQuickSort));
-		System.out.println("Time taken by Merge Sort: " + dualPivotQuickSortTime + " ns");
+		// System.out.println("Sorted array (Dual pivot quick sort): " +
+		// sorter.getArray());
+		System.out.println("Time taken by Deal pivot quick Sort: " + dualPivotQuickSortTime / 1000 + " ns");
 	}
 }

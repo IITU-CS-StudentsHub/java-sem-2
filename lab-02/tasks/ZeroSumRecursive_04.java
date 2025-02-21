@@ -1,32 +1,29 @@
 package tasks;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ZeroSumRecursive_04 {
+	private static Map<Integer, Boolean> memo = new HashMap<>();
 
-	public static boolean hasZeroSumSubset(int[] arr) {
-		return hasZeroSumSubset(arr, 0, 0, false);
-	}
+	public static boolean canReachZero(int n) {
+		if (n < 0)
+			return false;
+		if (n == 0)
+			return true;
 
-	private static boolean hasZeroSumSubset(int[] arr, int index, int currentSum, boolean used) {
-		if (index == arr.length) {
-			return used && currentSum == 0;
-		}
-		// включить arr[index]
-		if (hasZeroSumSubset(arr, index + 1, currentSum + arr[index], true)) {
-			return true;
-		}
-		// пропустить arr[index]
-		if (hasZeroSumSubset(arr, index + 1, currentSum, used)) {
-			return true;
-		}
-		return false;
+		if (memo.containsKey(n))
+			return memo.get(n);
+
+		boolean res = canReachZero(n - 3) || canReachZero(n - 5);
+
+		memo.put(n, res);
+
+		return res;
 	}
 
 	public static void main(String[] args) {
-		int[] arr = { 1, 2, -3, 4 };
-		if (hasZeroSumSubset(arr)) {
-			System.out.println("Существует непустое подмножество с суммой 0.");
-		} else {
-			System.out.println("Ни одного непустого подмножества с суммой 0 не найдено.");
-		}
+		int number = 7;
+		System.out.println("Можно ли получить 0 из " + number + ": " + canReachZero(number));
 	}
 }
