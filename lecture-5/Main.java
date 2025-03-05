@@ -1,3 +1,5 @@
+package lecture_5;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -71,16 +73,17 @@ public class Main {
 		int[] arr = new int[50];
 		Random random = new Random();
 
-		// Заполняем массив случайными числами от 1 до 999
 		for (int i = 0; i < arr.length; i++) {
 			arr[i] = random.nextInt(999) + 1;
 		}
 
-		System.out.println("Before sorting: " + Arrays.toString(arr));
+		System.out.println("Initiall array: ");
+		System.out.println(Arrays.toString(arr));
 
-		// Вызываем Radix Sort
 		radixsort(arr);
 
-		System.out.println("After sorting: " + Arrays.toString(arr));
+		System.out.println("After sorting: ");
+		System.out.println(Arrays.toString(arr));
+
 	}
 }

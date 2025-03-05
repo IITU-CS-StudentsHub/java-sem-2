@@ -1,3 +1,5 @@
+package lecture_4;
+
 public class Main {
 
 	private static void swap(int[] arr, int i, int j) {
