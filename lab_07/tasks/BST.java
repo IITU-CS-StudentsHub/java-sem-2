@@ -2,9 +2,9 @@ package lab_07.tasks;
 
 public class BST<T extends Comparable<T>> {
 
-	private class Node {
-		T data;
-		Node left, right;
+	public class Node {
+		public T data;
+		public Node left, right;
 
 		public Node(T data) {
 			this.data = data;
@@ -12,13 +12,13 @@ public class BST<T extends Comparable<T>> {
 		}
 	}
 
-	private Node root;
+	public Node root;
 
 	public BST() {
 		root = null;
 	}
 
-	private Node insert(T data, Node node) {
+	public Node insert(T data, Node node) {
 		if (node == null) {
 			return new Node(data);
 		}
@@ -36,7 +36,7 @@ public class BST<T extends Comparable<T>> {
 		root = insert(data, root);
 	}
 
-	private boolean search(T data, Node node) {
+	public boolean search(T data, Node node) {
 		if (node == null) {
 			return false;
 		}
@@ -52,7 +52,7 @@ public class BST<T extends Comparable<T>> {
 		return search(data, root);
 	}
 
-	private Node deleteNode(Node node, T data) {
+	public Node deleteNode(Node node, T data) {
 		if (node == null) {
 			return null;
 		}
@@ -75,7 +75,7 @@ public class BST<T extends Comparable<T>> {
 		return node;
 	}
 
-	private T minValue(Node node) {
+	public T minValue(Node node) {
 		T min = node.data;
 		while (node.left != null) {
 			min = node.left.data;
@@ -91,52 +91,16 @@ public class BST<T extends Comparable<T>> {
 
 	@Override
 	public String toString() {
-		inorder();
-		return "";
+		StringBuilder sb = new StringBuilder();
+		inorder(root, sb);
+		return sb.toString();
 	}
 
-	public void inorder() {
-		inorder(root);
-		System.out.println();
-	}
-
-	// LNR
-	private void inorder(Node node) {
-		if (node == null) {
+	private void inorder(Node node, StringBuilder sb) {
+		if (node == null)
 			return;
-		}
-		inorder(node.left);
-		System.out.print(node.data + " ");
-		inorder(node.right);
-	}
-
-	public void preorder() {
-		preorder(root);
-		System.out.println();
-	}
-
-	// NLR
-	private void preorder(Node node) {
-		if (node == null) {
-			return;
-		}
-		System.out.print(node.data + " ");
-		preorder(node.left);
-		preorder(node.right);
-	}
-
-	public void postorder() {
-		postorder(root);
-		System.out.println();
-	}
-
-	// LRN
-	private void postorder(Node node) {
-		if (node == null) {
-			return;
-		}
-		postorder(node.left);
-		postorder(node.right);
-		System.out.print(node.data + " ");
+		inorder(node.left, sb);
+		sb.append(node.data).append(" ");
+		inorder(node.right, sb);
 	}
 }
