@@ -4,44 +4,40 @@ import java.util.TreeSet;
 
 public class TreeSet<E extends Comparable<E>> extends TreeMap<E, Object> {
 
-	private static final Object PRESENT = new Object(); // Заглушка для значений
+	private static final Object PRESENT = new Object();
 
 	public TreeSet() {
 		super();
 	}
 
-	// Добавление элемента
 	public void add(E element) {
 		if (!contains(element)) {
-			put(element, PRESENT); // Добавляем элемент как ключ с заглушкой
+			put(element, PRESENT);
 		}
 	}
 
-	// Проверка, есть ли элемент в TreeSet
 	public boolean contains(E element) {
 		return get(element) != null;
 	}
 
-	// Удаление элемента
 	public void remove(E element) {
 		if (contains(element)) {
-			super.remove(element); // Удаляем ключ (и его заглушку)
+			super.remove(element);
 		}
 	}
 
-	// Переопределим toString, чтобы вывести элементы в порядке возрастания
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		inorder(root, sb);
-		return sb.toString().trim(); // Убираем лишний пробел в конце
+		return sb.toString().trim();
 	}
 
 	private void inorder(RBNode node, StringBuilder sb) {
 		if (node == null)
 			return;
 		inorder((RBNode) node.left, sb);
-		sb.append(node.toString().replace("=" + PRESENT, "")).append(" "); // Убираем =PRESENT из вывода
+		sb.append(node.toString().replace("=" + PRESENT, "")).append(" ");
 		inorder((RBNode) node.right, sb);
 	}
 }

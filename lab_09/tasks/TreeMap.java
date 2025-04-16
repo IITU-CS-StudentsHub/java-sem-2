@@ -2,7 +2,6 @@ package lab_09.tasks;
 
 public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 
-	// Внутренний класс для хранения пар ключ-значение
 	private class Entry extends RBNode {
 		private V value;
 
@@ -21,14 +20,12 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 		super();
 	}
 
-	// Вставка нового элемента (ключ + значение)
 	public void put(K key, V value) {
 		Entry newEntry = new Entry(key, value);
 		root = insert(root, newEntry);
-		fixInsert(newEntry); // Балансировка после вставки
+		fixInsert(newEntry);
 	}
 
-	// Вставка с правильной обработкой типов
 	@Override
 	@SuppressWarnings("unchecked")
 	public RBNode insert(RBNode current, RBNode newNode) {
@@ -36,7 +33,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 			return newNode;
 		}
 
-		// Сравниваем ключи
 		if (newNode.data.compareTo(current.data) < 0) {
 			current.left = insert((RBNode) current.left, newNode);
 			((RBNode) current.left).parent = current;
@@ -44,7 +40,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 			current.right = insert((RBNode) current.right, newNode);
 			((RBNode) current.right).parent = current;
 		} else {
-			// Если ключ уже существует, заменяем значение
 			Entry currentEntry = (Entry) current;
 			Entry newEntry = (Entry) newNode;
 			currentEntry.value = newEntry.value;
@@ -53,7 +48,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 		return current;
 	}
 
-	// Поиск по ключу
 	@SuppressWarnings("unchecked")
 	public V get(K key) {
 		RBNode node = searchNode(key, root);
@@ -64,7 +58,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 		return entry.value;
 	}
 
-	// Вспомогательный метод для поиска узла по ключу
 	@SuppressWarnings("unchecked")
 	private RBNode searchNode(K key, RBNode node) {
 		if (node == null) {
@@ -81,7 +74,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 		}
 	}
 
-	// Удаление элемента по ключу
 	public void remove(K key) {
 		root = deleteNode(root, key);
 	}
@@ -92,20 +84,17 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 			return null;
 		}
 
-		// Ищем ключ
 		if (key.compareTo((K) node.data) < 0) {
 			node.left = deleteNode((RBNode) node.left, key);
 		} else if (key.compareTo((K) node.data) > 0) {
 			node.right = deleteNode((RBNode) node.right, key);
 		} else {
-			// Удаляем узел с ключом
 			if (node.left == null) {
 				return (RBNode) node.right;
 			} else if (node.right == null) {
 				return (RBNode) node.left;
 			}
 
-			// Находим минимальное значение в правом поддереве
 			node.data = minValue(node.right);
 			node.right = deleteNode((RBNode) node.right, node.data);
 		}
@@ -113,7 +102,6 @@ public class TreeMap<K extends Comparable<K>, V> extends RedBlackTree<K> {
 		return node;
 	}
 
-	// Переопределим inorder для вывода с ключами и значениями
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

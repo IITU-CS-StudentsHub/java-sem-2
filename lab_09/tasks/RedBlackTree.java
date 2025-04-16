@@ -13,7 +13,7 @@ public class RedBlackTree<T extends Comparable<T>> extends BST<T> {
 
 		public RBNode(T data) {
 			super(data);
-			color = RED; // по умолчанию новые узлы — красные
+			color = RED;
 		}
 
 		@Override
@@ -138,7 +138,6 @@ public class RedBlackTree<T extends Comparable<T>> extends BST<T> {
 		node.parent = l;
 	}
 
-	// Переопределим inorder для вывода с цветом
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
