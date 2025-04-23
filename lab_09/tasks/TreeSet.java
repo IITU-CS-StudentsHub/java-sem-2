@@ -1,7 +1,5 @@
 package lab_09.tasks;
 
-import java.util.TreeSet;
-
 public class TreeSet<E extends Comparable<E>> extends TreeMap<E, Object> {
 
 	private static final Object PRESENT = new Object();
